@@ -1,18 +1,14 @@
+/*import { useStore } from "./hooks/useStore"*/
+
+import Languages from "./components/Languages";
+
 export default function App() {
+  /*const { fromLanguage, toLanguage } = useStore()*/
+
   return (
     <div className="app">
       <div className="card">
-        <header className="languages">
-
-        </header>
-        <main>
-          <textarea name="text" />
-        </main>
-        <footer>
-          <div className="icons">
-            
-          </div>
-        </footer>
+        <Languages type="from" />
       </div>
     </div>
   )
