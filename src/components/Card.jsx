@@ -1,16 +1,16 @@
-import { CopyIcon, SpeakerIcon } from "./Icons"
+import { ButtonIcon, CopyIcon, SpeakerIcon } from "./Icons"
 import Languages from "./Languages"
 
 export default function Card({ type, selected, setLanguage, children }) {
   const isFrom = type === "from"
+  const { value } = children.props
+
   return (
     <div className="card">
-      <Languages type={type} selected={selected} setLanguage={setLanguage} />
+      <Languages type={ type } selected={ selected } setLanguage={ setLanguage } />
       <main className="text">
-        {children}
-        {
-          isFrom && <div className="length"> {children.props.value.length} / 500 </div>
-        }
+        { children }
+        { isFrom && <div className="length"> { value.length } / 500 </div> }
       </main>
       <footer>
         <div className="icons">
@@ -21,9 +21,10 @@ export default function Card({ type, selected, setLanguage, children }) {
             <SpeakerIcon />
           </div>
         </div>
-        {
-          isFrom && <button> Translate </button>
-        }
+        { isFrom && <button>
+          <ButtonIcon />
+          Translate
+        </button> }
       </footer>
     </div>
   )

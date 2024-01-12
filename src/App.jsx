@@ -1,9 +1,16 @@
 import Card from "./components/Card"
 import { useStore } from "./hooks/useStore"
 
-
 export default function App() {
-  const { fromLanguage, toLanguage, fromText, toText, setFromLanguage, setToLanguage, setFromText } = useStore()
+  const {
+    fromLanguage,
+    toLanguage,
+    fromText,
+    toText,
+    setFromLanguage,
+    setToLanguage,
+    setFromText
+  } = useStore()
 
   return (
     <div className="app">
@@ -12,7 +19,7 @@ export default function App() {
       </Card>
 
       <Card type="to" selected={toLanguage} setLanguage={setToLanguage} text={fromText}>
-        <textarea defaultValue={toText} />
+        <textarea defaultValue={toText} disabled />
       </Card>
     </div>
   )
