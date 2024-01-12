@@ -30,7 +30,8 @@ function reducer (state, action) {
   }
 
   if(type === "SET_FROM_TEXT") {
-    console.log(action.payload)
+    if(action.payload.length > 500) return state
+    
     return {
       ...state,
       fromText: action.payload
