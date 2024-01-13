@@ -1,34 +1,46 @@
 import { AUTO_LANGUAGE, SUPPORTED_LANGUAGES } from "../constants";
 import { InterchangeIcon } from "./Icons";
 
-export default function Languages({ type, selected, setLanguage }) {
-  const handleChange = (event) => {
-    setLanguage(event.target.value)
-  }
+export default function Languages({ type, language, setLanguage, interchangeLanguages }) {
+
+  const handleChange = (event) => setLanguage(event.target.value)
 
   return (
     <header className="languages">
-      <form onChange={handleChange}>
+      <form>
         {
           type === "from" && <label>
             Detect Language
-            <input type="radio" defaultChecked={(AUTO_LANGUAGE === selected ? "checked" : "")} className="language" value={AUTO_LANGUAGE} name="lang"/>
+            <input
+              type="radio"
+              className="language"
+              value={AUTO_LANGUAGE}
+              name="lang"
+              checked={(AUTO_LANGUAGE === language ? "checked" : "")}
+              onChange={handleChange}
+            />
           </label>
         }
 
         {
           Object.entries(SUPPORTED_LANGUAGES).map(([key, text]) => (
             <label key={key}>
-              { text }
-              <input type="radio" className="language" value={key} name="lang" defaultChecked={(key === selected ? "checked" : "")}/>
+              {text}
+              <input
+                type="radio"
+                className="language"
+                value={key} name="lang"
+                checked={(key === language ? "checked" : "")}
+                onChange={handleChange}
+              />
             </label>
           ))
         }
       </form>
       {
-        type === "to" && <div className="interchange">
+        type === "to" && <button className="interchange" onClick={interchangeLanguages}>
           <InterchangeIcon />
-        </div>
+        </button>
       }
     </header>
   )
