@@ -1,41 +1,28 @@
-import { VOICE_FOR_LANGUAGE } from "../constants"
-import { ButtonIcon, CopyIcon, SpeakerIcon } from "./Icons"
 import Languages from "./Languages"
+import { useStore } from "../hooks/useStore"
+import Bottom from "./Bottom"
 
-export default function Card({ type, language, setLanguage, children, interchangeLanguages, handleTranslate }) {
+export default function Card({ type }) {
+
+  const { fromText, toText, setFromText } = useStore()
+
   const isFrom = type === "from"
-  const textLenght = type === "from" && children.props.value.length
+  const value = isFrom ? fromText : toText
 
-  const handleClipboard = () => {
-    navigator.clipboard.writeText(children.props.value)
-  }
-
-  const handleSpeak = () => {
-    const utterance = new SpeechSynthesisUtterance(children.props.value)
-    utterance.lang = VOICE_FOR_LANGUAGE[language]
-    speechSynthesis.speak(utterance)
+  const handleOnChange = (event) => {
+    if(!isFrom) return
+    setFromText(event.target.value)
   }
  
   return (
     <div className={`card ${type}`}>
-      <Languages type={type} language={language} setLanguage={setLanguage} interchangeLanguages={interchangeLanguages} />
+      <Languages type={type} />
       <main>
-        {children}
-        {isFrom && <div className="length"> {textLenght}/500 </div>}
-        <div className="bottom">
-          <div className="icons">
-            <button className="icon" onClick={handleSpeak}>
-              <SpeakerIcon />
-            </button>
-            <button className="icon" onClick={handleClipboard}>
-              <CopyIcon />
-            </button>
-          </div>
-          {isFrom && <button onClick={handleTranslate} className="translate">
-            <ButtonIcon />
-            Translate
-          </button>}
-        </div>
+        <textarea value={value} onChange={handleOnChange} disabled={type === "to"}/>
+        {
+          isFrom && <div className="length"> {fromText.length}/500 </div>
+        }
+        <Bottom isFrom={isFrom} />
       </main>
     </div>
   )

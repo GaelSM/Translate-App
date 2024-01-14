@@ -1,9 +1,18 @@
+import { useContext } from "react";
 import { AUTO_LANGUAGE, SUPPORTED_LANGUAGES } from "../constants";
+import { cardContex } from "../context/card";
 import { InterchangeIcon } from "./Icons";
 
-export default function Languages({ type, language, setLanguage, interchangeLanguages }) {
+export default function Languages({ type }) {
 
-  const handleChange = (event) => setLanguage(event.target.value)
+  const { fromLanguage, toLanguage , setFromLanguage, setToLanguage, interchangeLanguages } = useContext(cardContex)
+
+  const language = type === "from" ? fromLanguage : toLanguage
+
+  const handleChange = (event) => {
+    const language = event.target.value
+    type === "from" ? setFromLanguage(language) : setToLanguage(language)
+  }
   
   return (
     <header className="languages">
