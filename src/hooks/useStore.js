@@ -10,7 +10,7 @@ const initialState = {
 }
 
 function reducer (state, action) {
-  const { type } = action
+  const { type, payload } = action
 
   if(type === "INTERCHANGE_LANGUAGES") {
     if(state.fromLanguage === AUTO_LANGUAGE || state.toLanguage === state.fromLanguage) return state
@@ -23,20 +23,20 @@ function reducer (state, action) {
   }
 
   if(type === "SET_FROM_LANGUAGE") {
-    if(state.fromLanguage === action.payload) return state
+    if(state.fromLanguage === payload) return state
 
     return {
       ...state,
-      fromLanguage: action.payload
+      fromLanguage: payload
     }
   }
 
   if(type === "SET_TO_LANGUAGE") {
-    if(state.toLanguage === action.payload) return state
+    if(state.toLanguage === payload) return state
 
     return {
       ...state,
-      toLanguage: action.payload
+      toLanguage: payload
     }
   }
 
@@ -45,7 +45,14 @@ function reducer (state, action) {
     
     return {
       ...state,
-      fromText: action.payload
+      fromText: payload
+    }
+  }
+
+  if(type === "SET_TO_TEXT") {
+    return {
+      ...state,
+      toText: payload
     }
   }
 }
@@ -61,6 +68,8 @@ export function useStore() {
 
   const setFromText = (payload) => dispatch({ type: "SET_FROM_TEXT", payload})
 
+  const setToText = (payload) => dispatch({ type: "SET_TO_TEXT", payload})
+
   return {
     fromLanguage,
     toLanguage,
@@ -70,6 +79,7 @@ export function useStore() {
     interchangeLanguages,
     setFromLanguage,
     setToLanguage,
-    setFromText
+    setFromText,
+    setToText
   }
 }

@@ -7,7 +7,7 @@ export default function Languages({ type, language, setLanguage, interchangeLang
 
   return (
     <header className="languages">
-      <form>
+      <div className="inputs">
         {
           type === "from" && <label>
             Detect Language
@@ -36,9 +36,9 @@ export default function Languages({ type, language, setLanguage, interchangeLang
             </label>
           ))
         }
-      </form>
+      </div>
       {
-        type === "to" && <button className="interchange" onClick={interchangeLanguages}>
+        type === "to" && <button className="icon" onClick={interchangeLanguages}>
           <InterchangeIcon />
         </button>
       }
