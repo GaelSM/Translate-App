@@ -4,4 +4,10 @@ export const SUPPORTED_LANGUAGES = {
   es: "Spanish"
 }
 
+export const VOICE_FOR_LANGUAGE = {
+  en: "en-GB",
+  es: "es-MX",
+  fr: "fr-DE"
+}
+
 export const AUTO_LANGUAGE = "auto"

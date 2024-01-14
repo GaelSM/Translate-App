@@ -50,6 +50,7 @@ function reducer (state, action) {
   }
 
   if(type === "SET_TO_TEXT") {
+    console.log(payload)
     return {
       ...state,
       toText: payload

@@ -50,6 +50,7 @@ textarea {
   border: none;
   background: none;
   color: var(--White);
+  user-select: none;
 }
 
 textarea::-webkit-scrollbar {

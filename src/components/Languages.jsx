@@ -4,10 +4,10 @@ import { InterchangeIcon } from "./Icons";
 export default function Languages({ type, language, setLanguage, interchangeLanguages }) {
 
   const handleChange = (event) => setLanguage(event.target.value)
-
+  
   return (
     <header className="languages">
-      <div className="inputs">
+      <form className="inputs">
         {
           type === "from" && <label>
             Detect Language
@@ -36,7 +36,7 @@ export default function Languages({ type, language, setLanguage, interchangeLang
             </label>
           ))
         }
-      </div>
+      </form>
       {
         type === "to" && <button className="icon" onClick={interchangeLanguages}>
           <InterchangeIcon />

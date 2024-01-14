@@ -1,3 +1,4 @@
+import { VOICE_FOR_LANGUAGE } from "../constants"
 import { ButtonIcon, CopyIcon, SpeakerIcon } from "./Icons"
 import Languages from "./Languages"
 
@@ -5,6 +6,16 @@ export default function Card({ type, language, setLanguage, children, interchang
   const isFrom = type === "from"
   const textLenght = type === "from" && children.props.value.length
 
+  const handleClipboard = () => {
+    navigator.clipboard.writeText(children.props.value)
+  }
+
+  const handleSpeak = () => {
+    const utterance = new SpeechSynthesisUtterance(children.props.value)
+    utterance.lang = VOICE_FOR_LANGUAGE[language]
+    speechSynthesis.speak(utterance)
+  }
+ 
   return (
     <div className={`card ${type}`}>
       <Languages type={type} language={language} setLanguage={setLanguage} interchangeLanguages={interchangeLanguages} />
@@ -13,10 +24,10 @@ export default function Card({ type, language, setLanguage, children, interchang
         {isFrom && <div className="length"> {textLenght}/500 </div>}
         <div className="bottom">
           <div className="icons">
-            <button className="icon">
+            <button className="icon" onClick={handleSpeak}>
               <SpeakerIcon />
             </button>
-            <button className="icon">
+            <button className="icon" onClick={handleClipboard}>
               <CopyIcon />
             </button>
           </div>
