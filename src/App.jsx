@@ -6,7 +6,6 @@ export default function App() {
     <CardContexProvider>
       <div className="app">
         <Card type="from" />
-
         <Card type="to" />
       </div>
     </CardContexProvider>

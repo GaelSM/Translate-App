@@ -3,22 +3,22 @@ import { AUTO_LANGUAGE, SUPPORTED_LANGUAGES } from "../constants";
 import { cardContex } from "../context/card";
 import { InterchangeIcon } from "./Icons";
 
-export default function Languages({ type }) {
+export default function Languages({ isFrom }) {
 
   const { fromLanguage, toLanguage , setFromLanguage, setToLanguage, interchangeLanguages } = useContext(cardContex)
 
-  const language = type === "from" ? fromLanguage : toLanguage
+  const language = isFrom ? fromLanguage : toLanguage
 
   const handleChange = (event) => {
     const language = event.target.value
-    type === "from" ? setFromLanguage(language) : setToLanguage(language)
+    isFrom ? setFromLanguage(language) : setToLanguage(language)
   }
   
   return (
     <header className="languages">
       <form className="inputs">
         {
-          type === "from" && <label>
+          isFrom && <label>
             Detect Language
             <input
               type="radio"
@@ -47,7 +47,7 @@ export default function Languages({ type }) {
         }
       </form>
       {
-        type === "to" && <button className="icon" onClick={interchangeLanguages}>
+        !isFrom && <button className="icon" onClick={interchangeLanguages}>
           <InterchangeIcon />
         </button>
       }

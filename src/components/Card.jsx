@@ -1,10 +1,11 @@
 import Languages from "./Languages"
-import { useStore } from "../hooks/useStore"
 import Bottom from "./Bottom"
+import { useContext } from "react"
+import { cardContex } from "../context/card"
 
 export default function Card({ type }) {
 
-  const { fromText, toText, setFromText } = useStore()
+  const { fromText, toText, setFromText } = useContext(cardContex)
 
   const isFrom = type === "from"
   const value = isFrom ? fromText : toText
@@ -16,9 +17,9 @@ export default function Card({ type }) {
  
   return (
     <div className={`card ${type}`}>
-      <Languages type={type} />
+      <Languages isFrom={isFrom} />
       <main>
-        <textarea value={value} onChange={handleOnChange} disabled={type === "to"}/>
+        <textarea value={value} onChange={handleOnChange} disabled={type === "to"} name={type + "-textarea"}/>
         {
           isFrom && <div className="length"> {fromText.length}/500 </div>
         }
