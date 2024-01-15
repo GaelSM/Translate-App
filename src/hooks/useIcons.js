@@ -5,12 +5,12 @@ import { useContext, useRef } from "react"
 export function useIcons({ isFrom }) {
   const { fromText, toText ,fromLanguage, toLanguage, setToText } = useContext(cardContex)
 
-  const previousText = useRef(fromText)
+  const previousState = useRef({ fromText, fromLanguage, toLanguage })
 
   const handleTranslate = () => {
-    console.log({previousText: previousText.current, fromText, result: previousText.current === fromText})
-    if (previousText.current === fromText || fromLanguage === AUTO_LANGUAGE || fromText === "") return
-    previousText.current = fromText
+    const newObj = { fromText, fromLanguage, toLanguage }
+    if (JSON.stringify(newObj) === JSON.stringify(previousState.current) || fromLanguage === AUTO_LANGUAGE || fromText === "") return
+    previousState.current = newObj
 
     fetch(`https://api.mymemory.translated.net/get?q=${fromText}&langpair=${fromLanguage}|${toLanguage}`)
       .then(res => res.json())

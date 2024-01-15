@@ -11,6 +11,8 @@ export default function Languages({ isFrom }) {
 
   const handleChange = (event) => {
     const language = event.target.value
+    if(isFrom && language === toLanguage || !isFrom && language === fromLanguage) return
+
     isFrom ? setFromLanguage(language) : setToLanguage(language)
   }
   
