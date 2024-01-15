@@ -15,6 +15,7 @@ export default defineConfig({
       { find: '@context', replacement: resolve(join(root, 'context'))},
       { find: '@', replacement: resolve(root)}
     ]
-  }
+  },
+  base: "https://gaelsm.github.io/Translate-App"
 })
 
