@@ -1,5 +1,5 @@
-import { useIcons } from "../hooks/useIcons"
-import { ButtonIcon, CopyIcon, SpeakerIcon } from "./Icons"
+import { useIcons } from "@hooks/useIcons"
+import { ButtonIcon, CopyIcon, SpeakerIcon } from "@components/Icons"
 
 export default function Bottom({ isFrom }) {
 

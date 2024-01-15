@@ -102,7 +102,7 @@ label:has(input:checked) {
 .app {
   min-height: 100vh;
   height: 100vh;
-  background: url("../src/assets/hero_img.jpg"), var(--Background);
+  background: url("@assets/hero_img.jpg"), var(--Background);
   background-repeat: no-repeat;
   background-size: 100vw;
   display: flex;

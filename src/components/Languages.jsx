@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { SUPPORTED_LANGUAGES } from "../constants";
-import { cardContex } from "../context/card";
-import { InterchangeIcon } from "./Icons";
+import { SUPPORTED_LANGUAGES } from "@/constants";
+import { cardContex } from "@context/card";
+import { InterchangeIcon } from "@components/Icons";
 
 export default function Languages({ isFrom }) {
 

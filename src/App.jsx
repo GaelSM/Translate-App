@@ -1,5 +1,5 @@
-import Card from "./components/Card"
-import { CardContexProvider } from "./context/card"
+import Card from "@components/Card"
+import { CardContexProvider } from "@context/card"
 
 export default function App() {
   return (

@@ -1,7 +1,7 @@
-import Languages from "./Languages"
-import Bottom from "./Bottom"
+import Languages from "@components/Languages"
+import Bottom from "@components/Bottom"
 import { useContext } from "react"
-import { cardContex } from "../context/card"
+import { cardContex } from "@context/card"
 
 export default function Card({ type }) {
 

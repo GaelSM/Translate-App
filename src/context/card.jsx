@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { useStore } from "../hooks/useStore";
+import { useStore } from "@hooks/useStore";
 
 export const cardContex = createContext()
 

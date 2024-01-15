@@ -1,5 +1,5 @@
-import { cardContex } from "../context/card"
-import { VOICE_FOR_LANGUAGE } from "../constants"
+import { cardContex } from "@context/card"
+import { VOICE_FOR_LANGUAGE } from "@/constants"
 import { useContext, useRef } from "react"
 
 export function useIcons({ isFrom }) {
