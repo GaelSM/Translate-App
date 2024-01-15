@@ -1,5 +1,5 @@
 import { cardContex } from "../context/card"
-import { AUTO_LANGUAGE, VOICE_FOR_LANGUAGE } from "../constants"
+import { VOICE_FOR_LANGUAGE } from "../constants"
 import { useContext, useRef } from "react"
 
 export function useIcons({ isFrom }) {
@@ -9,7 +9,7 @@ export function useIcons({ isFrom }) {
 
   const handleTranslate = () => {
     const newObj = { fromText, fromLanguage, toLanguage }
-    if (JSON.stringify(newObj) === JSON.stringify(previousState.current) || fromLanguage === AUTO_LANGUAGE || fromText === "") return
+    if (JSON.stringify(newObj) === JSON.stringify(previousState.current) || fromText === "") return
     previousState.current = newObj
 
     fetch(`https://api.mymemory.translated.net/get?q=${fromText}&langpair=${fromLanguage}|${toLanguage}`)

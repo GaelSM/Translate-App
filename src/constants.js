@@ -9,5 +9,3 @@ export const VOICE_FOR_LANGUAGE = {
   es: "es-MX",
   fr: "fr-DE"
 }
-
-export const AUTO_LANGUAGE = "auto"

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { AUTO_LANGUAGE, SUPPORTED_LANGUAGES } from "../constants";
+import { SUPPORTED_LANGUAGES } from "../constants";
 import { cardContex } from "../context/card";
 import { InterchangeIcon } from "./Icons";
 
@@ -19,20 +19,6 @@ export default function Languages({ isFrom }) {
   return (
     <header className="languages">
       <form className="inputs">
-        {
-          isFrom && <label>
-            Detect Language
-            <input
-              type="radio"
-              className="language"
-              value={AUTO_LANGUAGE}
-              name="lang"
-              checked={(AUTO_LANGUAGE === language ? "checked" : "")}
-              onChange={handleChange}
-            />
-          </label>
-        }
-
         {
           Object.entries(SUPPORTED_LANGUAGES).map(([key, text]) => (
             <label key={key}>

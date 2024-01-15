@@ -194,3 +194,23 @@ label:has(input:checked) {
   border-radius: 10px;
   border: 1px solid var(--Blue);
 }
+
+@media (max-width: 1250px) {
+  :root {
+    --Card-Widht: 80%;
+  }
+
+  .app {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 540px) {
+  :root {
+    --Card-Widht: 90%;
+  }
+
+  label {
+    font-size: var(--Small);
+  }
+}
